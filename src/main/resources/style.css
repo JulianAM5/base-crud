@@ -4,6 +4,15 @@
     -fx-pref-height: 30px;
 }
 
+.title-label-with-line {
+    -fx-text-fill: #e8edf3;
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-font-family: "Segoe UI", Arial, sans-serif;
+    -fx-padding: 0 0 15 0;
+    -fx-effect: dropshadow(one-pass-box, rgba(0,0,0,0.5), 2, 0, 0, 1);
+}
+
 #ventanas {
     -fx-background-color: #1e1e1e;
     -fx-padding: 30px 35px 35px 35px;
