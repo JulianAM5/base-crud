@@ -47,6 +47,31 @@ public class EnlaceBD {
         }
     }
 
+    public ArrayList<String> RecuperarTelefonosDePersona(int personaId) {
+        try {
+            ArrayList<String> telefonos = new ArrayList<>();
+            
+            stmt = conn.createStatement();
+            rs = stmt.executeQuery("SELECT telefono FROM Telefonos WHERE personaId = " + personaId);
+
+            while (rs.next()) {
+                telefonos.add(rs.getString("telefono"));
+            }
+
+            return telefonos;
+        } catch (SQLException se) {
+            se.printStackTrace();
+            return null;
+        } finally {
+            try {
+                if (rs != null) rs.close();
+                if (stmt != null) stmt.close();
+            } catch (SQLException se) {
+                se.printStackTrace();
+            }
+        }
+    }
+
     public void ConectarAServidor() {
 
         try {
