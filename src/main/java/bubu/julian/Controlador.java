@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import bubu.julian.GUI.MenuPrincipal;
 import bubu.julian.GUI.VentanaAñadir;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 
 /**
@@ -13,6 +14,7 @@ public class Controlador {
 
     private EnlaceBD enlaceBD;
     private StackPane root;
+    private MenuPrincipal menu;
 
     public Controlador() {
         enlaceBD = new EnlaceBD();
@@ -27,31 +29,40 @@ public class Controlador {
         root.getChildren().add(new MenuPrincipal(this));
     }
 
-    public void mostrarVentanaPersona() {
-
-    }
-
     public void mostrarVentanaAñadir() {
         root.getChildren().add(new VentanaAñadir(this));
+    }
+
+    public void cerrarVentana(Pane pane) {
+        root.getChildren().remove(pane);
     }
 
     public boolean solicitarAñadirPersona(String nombre, String direccion) {
         if (nombre.isEmpty() || direccion.isEmpty()) { return false; }
 
         if (!enlaceBD.AñadirPersona(nombre, direccion)) { return false; }
-
+        
+        menu.actualizar();
         return true;
     }
 
-    public boolean solicitarEliminarPersona(int personaId) {
-        return false;
+    public boolean solicitarEliminarPersona(int id) {
+        menu.actualizar();
+        return true;
+    }
+
+    public boolean solicitarEliminarTelefonoAPersona(int personaId, String numTelefono) {
+        menu.actualizar();
+        return true;
     }
 
     public boolean solicitarAñadirTelefonoAPersona(int personaId, String numTelefono) {
         if (numTelefono.isEmpty()) { return false; }
 
         if (!enlaceBD.AñadirTelefonoAPersona(personaId, numTelefono)) { return false; }
-        return false;
+
+        menu.actualizar();
+        return true;
     }
 
     public ArrayList<Persona> recuperarPersonas() {

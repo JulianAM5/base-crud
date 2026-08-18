@@ -28,6 +28,11 @@ public class MenuPrincipal extends BorderPane {
         setRight(crearTablaTelefonos(-1));
         setBottom(crearBotonAñadir());
     }
+    
+    public void actualizar() {
+        setCenter(crearTablaPersonas());
+        setRight(crearTablaTelefonos(-1));
+    }
 
     private TableView crearTablaPersonas() {
         TableView<Persona> tabla = new TableView<Persona>();
@@ -94,7 +99,7 @@ public class MenuPrincipal extends BorderPane {
         setAlignment(añadirButton, Pos.CENTER);
 
         añadirButton.setOnAction(e -> {
-            
+            controlador.mostrarVentanaAñadir();
         });
 
         return añadirButton;
