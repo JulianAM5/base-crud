@@ -75,6 +75,40 @@ public class EnlaceBD {
         }
     }
 
+    public boolean AñadirPersona(String nombre, String direccion) {
+        try {
+            String sqlInstruccion = "INSERT INTO Personas (nombre, direccion) VALUES (?, ?)";
+            PreparedStatement ps = conn.prepareStatement(sqlInstruccion);
+
+            ps.setString(1, nombre);
+            ps.setString(2, direccion);
+            
+            ps.executeUpdate();
+            ps.close();
+            return true;
+        } catch (SQLException se) {
+            se.printStackTrace();
+            return false;
+        }
+    }
+
+    public boolean AñadirTelefonoAPersona(int personaId, String numTelefono) {
+        try {
+            String sqlInstruccion = "INSERT INTO Telefonos (personaId, telefono) VALUES (?, ?)";
+            PreparedStatement ps = conn.prepareStatement(sqlInstruccion);
+
+            ps.setInt(1, personaId);
+            ps.setString(2, numTelefono);
+
+            ps.executeUpdate();
+            ps.close();
+            return true;
+        } catch (SQLException se) {
+            se.printStackTrace();
+            return false;
+        }
+    }
+
     public void ConectarAServidor() {
 
         try {
