@@ -57,9 +57,8 @@ public class EnlaceBD {
             rs = stmt.executeQuery("SELECT telefono FROM Telefonos WHERE personaId = " + personaId);
 
             while (rs.next()) {
-                int id = rs.getInt("id");
                 String numTelefono = rs.getString("telefono");
-                telefonos.add(new Telefono(id, personaId, numTelefono));
+                telefonos.add(new Telefono(personaId, numTelefono));
             }
 
             return telefonos;
