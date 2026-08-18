@@ -1,0 +1,320 @@
+.button {
+    -fx-text-fill: white;
+    -fx-pref-width: 90px;
+    -fx-pref-height: 30px;
+}
+
+#ventanas {
+    -fx-background-color: #1e1e1e;
+    -fx-padding: 30px 35px 35px 35px;
+    -fx-background-radius: 10px;
+    -fx-border-color: #3c3f41;
+    -fx-border-radius: 10px;
+    -fx-border-width: 1.5px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.7), 20, 0, 0, 5);
+    -fx-max-width: 450px;
+    -fx-max-height: 500px;
+    -fx-min-width: 350px;
+}
+
+.button:hover {
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 5, 0.5, 0, 0);
+}
+
+.label {
+    -fx-text-fill: white;
+}
+
+.root {
+    -fx-base: #2b2b2b;
+    -fx-background: #1e1e1e;
+    -fx-control-inner-background: #252526;
+    -fx-control-inner-background-alt: #2d2d2d;
+}
+
+.table-view {
+    -fx-background-color: transparent;
+    -fx-border-color: #3c3f41;
+    -fx-border-width: 1px;
+    -fx-border-radius: 8px;
+    -fx-background-radius: 8px;
+    -fx-padding: 0;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 10, 0, 0, 4);
+}
+
+/* Column headers background */
+.table-view .column-header-background {
+    -fx-background-color: linear-gradient(to bottom, #3a3f4b, #2d323e);
+    -fx-background-radius: 8px 8px 0 0;
+    -fx-padding: 0;
+}
+
+/* Column headers */
+.table-view .column-header {
+    -fx-background-color: transparent;
+    -fx-border-color: #4a505e;
+    -fx-border-width: 0 1px 1px 0;
+    -fx-padding: 12px 8px;
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: #e8edf3;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-alignment: CENTER_LEFT;
+    -fx-effect: dropshadow(one-pass-box, rgba(0,0,0,0.3), 1, 0, 0, 1);
+}
+
+/* ========== ROWS ========== */
+/* Default row */
+.table-row-cell {
+    -fx-background-color: #2d2d2d;
+    -fx-table-cell-border-color: #3a3a3a;
+    -fx-padding: 6px 0;
+}
+
+/* Alternating row colors */
+.table-row-cell:odd {
+    -fx-background-color: #353535;
+}
+
+.table-row-cell:even {
+    -fx-background-color: #2d2d2d;
+}
+
+/* Hover effect */
+.table-row-cell:hover {
+    -fx-background-color: #3d4a5c;
+}
+
+/* Selected row */
+.table-row-cell:selected {
+    -fx-background-color: linear-gradient(to bottom, #4a7a9c, #3a6a8c);
+}
+
+.table-row-cell:selected .table-cell {
+    -fx-text-fill: white;
+}
+
+/* ========== CELLS ========== */
+.table-cell {
+    -fx-text-fill: #c8d0d8;
+    -fx-font-size: 13px;
+    -fx-padding: 8px 12px;
+    -fx-alignment: CENTER_LEFT;
+}
+
+/* First column - primary color highlight */
+.table-cell:first {
+    -fx-font-weight: bold;
+    -fx-text-fill: #7ab8e0;
+}
+
+/* ========== SCROLL BARS ========== */
+.table-view .scroll-bar {
+    -fx-background-color: #2b2b2b;
+}
+
+.table-view .scroll-bar .thumb {
+    -fx-background-color: #5a6a7a;
+    -fx-background-radius: 8px;
+}
+
+.table-view .scroll-bar .thumb:hover {
+    -fx-background-color: #6a8a9a;
+}
+
+.table-view .scroll-bar .increment-button,
+.table-view .scroll-bar .decrement-button {
+    -fx-background-color: transparent;
+}
+
+/* ========== HEADER SORT ARROWS ========== */
+.table-view .arrow {
+    -fx-background-color: #7ab8e0;
+}
+
+/* ========== FOCUS INDICATOR ========== */
+.table-view:focused {
+    -fx-border-color: #5a8a9a;
+}
+
+/* ========== PLACEHOLDER TEXT ========== */
+.table-view .placeholder .label {
+    -fx-text-fill: #6a7a8a;
+    -fx-font-size: 16px;
+    -fx-font-style: italic;
+}
+
+
+
+
+
+/* Contenedor VBox principal */
+.vbox-phone-window {
+    -fx-background-color: #1e1e1e;
+    -fx-padding: 30 40 30 40;
+    -fx-alignment: center;
+    -fx-spacing: 20;
+}
+
+/* ========== ETIQUETAS ========== */
+.label-phone-title {
+    -fx-text-fill: #e8edf3;
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-font-family: "Segoe UI", Arial, sans-serif;
+    -fx-effect: dropshadow(one-pass-box, rgba(0,0,0,0.5), 2, 0, 0, 1);
+}
+
+/* Etiqueta del campo de texto */
+.label-phone-field {
+    -fx-text-fill: #7ab8e0;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-font-family: "Segoe UI", Arial, sans-serif;
+}
+
+/* ========== CAMPO DE TEXTO ========== */
+.text-field-phone {
+    -fx-background-color: #2d2d2d;
+    -fx-text-fill: #c8d0d8;
+    -fx-font-size: 14px;
+    -fx-font-family: "Segoe UI", Arial, sans-serif;
+    -fx-padding: 10 15 10 15;
+    -fx-pref-width: 250;
+    -fx-background-radius: 6;
+    -fx-border-color: #3c3f41;
+    -fx-border-radius: 6;
+    -fx-border-width: 1.5px;
+    -fx-prompt-text-fill: #6a7a8a;
+}
+
+.text-field-phone:focused {
+    -fx-border-color: #4a7a9c;
+    -fx-background-color: #333333;
+    -fx-effect: dropshadow(gaussian, rgba(74, 122, 156, 0.3), 8, 0, 0, 0);
+}
+
+.text-field-phone:error {
+    -fx-border-color: #e74c3c;
+    -fx-background-color: #3d2525;
+}
+
+/* ========== BOTONES ========== */
+.button-phone {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-font-family: "Segoe UI", Arial, sans-serif;
+    -fx-padding: 10 30 10 30;
+    -fx-background-radius: 6;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 4, 0, 0, 2);
+    -fx-min-width: 120;
+}
+
+/* Estilo base para todos los botones */
+.button-confirm, .button-cancel {
+    -fx-font-size: 14px;  /* Tamaño de fuente más legible */
+    -fx-font-weight: bold;
+    -fx-font-family: "Segoe UI", Arial, sans-serif;
+    -fx-padding: 10px 25px 10px 25px;  /* Padding horizontal aumentado */
+    -fx-background-radius: 6px;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 4, 0, 0, 2);
+    -fx-min-width: 120px;  /* Ancho mínimo para evitar que el texto se corte */
+    -fx-pref-width: 130px;  /* Ancho preferido */
+}
+
+/* Botón Confirmar */
+.button-confirm {
+    -fx-background-color: linear-gradient(to bottom, #4a8a5c, #3a7a4c);
+    -fx-text-fill: white;
+    -fx-border-color: #3a6a4c;
+    -fx-border-radius: 6px;
+    -fx-border-width: 1.5px;
+}
+
+.button-confirm:hover {
+    -fx-background-color: linear-gradient(to bottom, #5a9a6c, #4a8a5c);
+    -fx-effect: dropshadow(gaussian, rgba(74, 138, 92, 0.4), 8, 0, 0, 2);
+    -fx-scale-x: 1.02;
+    -fx-scale-y: 1.02;
+}
+
+.button-confirm:pressed {
+    -fx-background-color: linear-gradient(to bottom, #3a7a4c, #2a6a3c);
+    -fx-scale-x: 0.98;
+    -fx-scale-y: 0.98;
+}
+
+.button-confirm:disabled {
+    -fx-opacity: 0.5;
+    -fx-effect: none;
+}
+
+/* Botón Cancelar */
+.button-cancel {
+    -fx-background-color: linear-gradient(to bottom, #6a3a3a, #5a2a2a);
+    -fx-text-fill: #e8d0d0;
+    -fx-border-color: #5a3a3a;
+    -fx-border-radius: 6px;
+    -fx-border-width: 1.5px;
+}
+
+.button-cancel:hover {
+    -fx-background-color: linear-gradient(to bottom, #7a4a4a, #6a3a3a);
+    -fx-effect: dropshadow(gaussian, rgba(106, 58, 58, 0.4), 8, 0, 0, 2);
+    -fx-scale-x: 1.02;
+    -fx-scale-y: 1.02;
+}
+
+.button-cancel:pressed {
+    -fx-background-color: linear-gradient(to bottom, #5a2a2a, #4a1a1a);
+    -fx-scale-x: 0.98;
+    -fx-scale-y: 0.98;
+}
+
+.button-blue {
+    -fx-background-color: linear-gradient(to bottom, #4a7a9c, #3a6a8c);
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-font-family: "Segoe UI", Arial, sans-serif;
+    -fx-padding: 10px 25px 10px 25px;
+    -fx-background-radius: 6px;
+    -fx-border-color: #3a6a8c;
+    -fx-border-radius: 6px;
+    -fx-border-width: 1.5px;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 4, 0, 0, 2);
+    -fx-min-width: 120px;
+    -fx-pref-width: 130px;
+}
+
+.button-blue:hover {
+    -fx-background-color: linear-gradient(to bottom, #5a8aac, #4a7a9c);
+    -fx-effect: dropshadow(gaussian, rgba(74, 122, 156, 0.4), 8, 0, 0, 2);
+    -fx-scale-x: 1.02;
+    -fx-scale-y: 1.02;
+}
+
+.button-blue:pressed {
+    -fx-background-color: linear-gradient(to bottom, #3a6a8c, #2a5a7c);
+    -fx-scale-x: 0.98;
+    -fx-scale-y: 0.98;
+}
+/* ========== MENSAJES DE VALIDACIÓN ========== */
+.label-error {
+    -fx-text-fill: #e74c3c;
+    -fx-font-size: 12px;
+    -fx-font-family: "Segoe UI", Arial, sans-serif;
+    -fx-font-style: italic;
+    -fx-padding: 5 0 0 0;
+    -fx-opacity: 0;
+    -fx-transition: opacity 0.3s;
+}
+
+.label-error:visible {
+    -fx-opacity: 1;
+}
