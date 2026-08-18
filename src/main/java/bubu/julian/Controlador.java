@@ -3,6 +3,7 @@ package bubu.julian;
 import java.util.ArrayList;
 
 import bubu.julian.GUI.MenuPrincipal;
+import bubu.julian.GUI.VentanaAñadir;
 import javafx.scene.layout.StackPane;
 
 /**
@@ -30,15 +31,26 @@ public class Controlador {
 
     }
 
-    public boolean solicitarAñadirPersona(int personaId) {
-        return false;
+    public void mostrarVentanaAñadir() {
+        root.getChildren().add(new VentanaAñadir(this));
+    }
+
+    public boolean solicitarAñadirPersona(String nombre, String direccion) {
+        if (nombre.isEmpty() || direccion.isEmpty()) { return false; }
+
+        if (!enlaceBD.AñadirPersona(nombre, direccion)) { return false; }
+
+        return true;
     }
 
     public boolean solicitarEliminarPersona(int personaId) {
         return false;
     }
 
-    public boolean solicitarAñadirTelefonoAPersona(int personaId, String telefono) {
+    public boolean solicitarAñadirTelefonoAPersona(int personaId, String numTelefono) {
+        if (numTelefono.isEmpty()) { return false; }
+
+        if (!enlaceBD.AñadirTelefonoAPersona(personaId, numTelefono)) { return false; }
         return false;
     }
 
