@@ -60,14 +60,16 @@ public class VentanaAñadir extends BorderPane {
         setCenter(holder);
     }
 
-    public void mostrarModificarPersona(int personaId) {
+    public void mostrarModificarPersona(int personaId, String nombre, String direccion) {
         VBox holder = new VBox();
 
         Label nombreLabel = new Label("Nombre");
         TextField nombreField = new TextField();
+        nombreField.setText(nombre);
 
         Label direccionLabel = new Label("Direccion");
         TextField direccionField = new TextField();
+        direccionField.setText(direccion);
 
         HBox botones = new HBox();
         Button confirmarButton = new Button("Confirmar");

@@ -61,6 +61,7 @@ public class MenuPrincipal extends BorderPane {
         colDireccion.setPrefWidth(400);
         tabla.setPrefWidth(830);
         tabla.setMaxWidth(830);
+        tabla.setPrefHeight(500);
 
 
         tabla.getSelectionModel().selectedItemProperty().addListener((obs, anterior, seleccionado) -> {
@@ -98,7 +99,8 @@ public class MenuPrincipal extends BorderPane {
         modificarButton.setOnAction(e -> {
             if (idPersonaSeleccionada == -1) { return; }
 
-            controlador.mostrarVentanaModificar(idPersonaSeleccionada);
+            Persona persona = tabla.getSelectionModel().getSelectedItem();
+            controlador.mostrarVentanaModificar(idPersonaSeleccionada, persona.getNombre(), persona.getDireccion());
         });
 
         eliminarButton.setOnAction(e -> {
@@ -125,6 +127,7 @@ public class MenuPrincipal extends BorderPane {
         colTelefono.setPrefWidth(300);
         tabla.setPrefWidth(300);
         tabla.setMaxWidth(300);
+        tabla.setPrefHeight(500);
 
         tabla.getColumns().addAll(colTelefono);
 
@@ -175,7 +178,7 @@ public class MenuPrincipal extends BorderPane {
 
     private Label crearTitulo() {
         Label titulo = new Label("Consulta de Personas");
-
+        titulo.getStyleClass().add("title-label-with-line");
         setAlignment(titulo, Pos.CENTER);
 
         return titulo;

@@ -109,6 +109,24 @@ public class EnlaceBD {
         }
     }
 
+    public boolean ModificarPersona(int id, String nombre, String direccion) {
+        try {
+            String sqlInstruccion = "UPDATE Personas SET nombre = ?, direccion = ? WHERE id = ?";
+            PreparedStatement ps = conn.prepareStatement(sqlInstruccion);
+
+            ps.setString(1, nombre);
+            ps.setString(2, direccion);
+            ps.setInt(3, id);
+
+            ps.executeUpdate();
+            ps.close();
+            return true;
+        } catch (SQLException se) {
+            se.printStackTrace();
+            return false;
+        }
+    }
+
     public boolean EliminarPersona(int personaId) {
         try {
             String sqlInstruccion = "DELETE FROM Personas WHERE Id = ?";

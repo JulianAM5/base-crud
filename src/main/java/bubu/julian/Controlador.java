@@ -37,9 +37,9 @@ public class Controlador {
         root.getChildren().add(ventana);
     }
 
-    public void mostrarVentanaModificar(int personaId) {
+    public void mostrarVentanaModificar(int personaId, String nombre, String direccion) {
         VentanaAñadir ventana = new VentanaAñadir(this);
-        ventana.mostrarModificarPersona(personaId);
+        ventana.mostrarModificarPersona(personaId, nombre, direccion);
         root.getChildren().add(ventana);
     }
 
@@ -61,6 +61,9 @@ public class Controlador {
     }
 
     public boolean solicitarModificarPersona(int id, String nombre, String direccion) {
+        if (!enlaceBD.ModificarPersona(id, nombre, direccion)) { return false; }
+
+        menu.actualizar();
         return true;
     }
 
