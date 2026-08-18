@@ -2,7 +2,9 @@ package bubu.julian;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 /**
@@ -15,7 +17,8 @@ public class App extends Application{
 
 	@Override
 	public void start(Stage stage) throws Exception {
-        stage.setScene(new Scene(new BorderPane(), 1280, 720));
+        Controlador controlador = new Controlador();
+        stage.setScene(new Scene(controlador.getRoot(), 1280, 720));
         stage.show();
 	}
 }
