@@ -34,6 +34,18 @@ public class VentanaAñadir extends BorderPane {
         HBox botones = new HBox();
         Button confirmarButton = new Button("Confirmar");
         Button cancelarButton = new Button("Cancelar");
+
+        confirmarButton.setOnAction(e -> {
+            if(controlador.solicitarAñadirPersona(nombreField.getText(), direccionField.getText())) {
+                nombreField.clear();
+                direccionField.clear();
+            }
+        });
+
+        cancelarButton.setOnAction(e -> {
+            controlador.cerrarVentana(this);
+        });
+
         botones.getChildren().addAll(confirmarButton, cancelarButton);
         botones.setSpacing(40);;
         botones.setAlignment(Pos.CENTER);
