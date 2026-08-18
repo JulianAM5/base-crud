@@ -3,6 +3,8 @@ package bubu.julian;
 import java.sql.*;
 import java.util.ArrayList;
 
+import bubu.julian.Data.Persona;
+import bubu.julian.Data.Telefono;
 import javafx.collections.ObservableList;
 
 public class EnlaceBD {

@@ -2,8 +2,8 @@ package bubu.julian.GUI;
 
 import bubu.julian.Controlador;
 import bubu.julian.EnlaceBD;
-import bubu.julian.Persona;
-import bubu.julian.Telefono;
+import bubu.julian.Data.Persona;
+import bubu.julian.Data.Telefono;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Pos;

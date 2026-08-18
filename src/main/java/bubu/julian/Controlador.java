@@ -2,9 +2,11 @@ package bubu.julian;
 
 import java.util.ArrayList;
 
+import bubu.julian.Data.Persona;
+import bubu.julian.Data.Telefono;
+import bubu.julian.GUI.AñadirModificarPersonaGUI;
 import bubu.julian.GUI.AñadirTelefonoGUI;
 import bubu.julian.GUI.MenuPrincipal;
-import bubu.julian.GUI.VentanaAñadir;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 
@@ -32,13 +34,13 @@ public class Controlador {
     }
 
     public void mostrarVentanaAñadir() {
-        VentanaAñadir ventana = new VentanaAñadir(this);
+        AñadirModificarPersonaGUI ventana = new AñadirModificarPersonaGUI(this);
         ventana.mostrarAñadirPersona();
         root.getChildren().add(ventana);
     }
 
     public void mostrarVentanaModificar(int personaId, String nombre, String direccion) {
-        VentanaAñadir ventana = new VentanaAñadir(this);
+        AñadirModificarPersonaGUI ventana = new AñadirModificarPersonaGUI(this);
         ventana.mostrarModificarPersona(personaId, nombre, direccion);
         root.getChildren().add(ventana);
     }

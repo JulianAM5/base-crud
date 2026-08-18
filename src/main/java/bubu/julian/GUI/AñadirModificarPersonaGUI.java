@@ -10,13 +10,12 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 /**
- * VentanaAñadir
+ * AñadirModificarPersonaGUI
  */
-public class VentanaAñadir extends BorderPane {
-
+public class AñadirModificarPersonaGUI extends BorderPane {
     Controlador controlador;
 
-    public VentanaAñadir(Controlador controlador) {
+    public AñadirModificarPersonaGUI(Controlador controlador) {
         this.controlador = controlador;
         setId("ventanas");
     }
@@ -97,4 +96,5 @@ public class VentanaAñadir extends BorderPane {
 
         setCenter(holder);
     }
+
 }

@@ -1,4 +1,4 @@
-package bubu.julian;
+package bubu.julian.Data;
 
 /**
  * Telefono
