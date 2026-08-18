@@ -22,7 +22,7 @@ public class AñadirTelefonoGUI extends BorderPane {
         this.controlador = controlador;
         this.personaId = personaId;
 
-        setMaxWidth(400);
+        setId("ventanas");
         mostrarAñadirNuevoTelefono();
     }
 
@@ -35,6 +35,8 @@ public class AñadirTelefonoGUI extends BorderPane {
         HBox buttonHolder = new HBox();
         Button confirmarButton = new Button("Confirmar");
         Button cancelarButton = new Button("Cancelar");
+        confirmarButton.getStyleClass().addAll("button-phone", "button-confirm");
+        cancelarButton.getStyleClass().addAll("button-phone", "button-cancel");
 
         confirmarButton.setOnAction(e -> {
             if(controlador.solicitarAñadirTelefonoAPersona(personaId, telField.getText())) {
