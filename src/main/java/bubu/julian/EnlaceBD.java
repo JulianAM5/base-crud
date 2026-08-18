@@ -1,6 +1,7 @@
 package bubu.julian;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 public class EnlaceBD {
     // Datos de conexión a la base de datos
@@ -14,6 +15,36 @@ public class EnlaceBD {
 
     public EnlaceBD() {
 
+    }
+
+    public ArrayList<Persona> RecuperarPersonas() {
+        try {
+            ArrayList<Persona> personas = new ArrayList<>();
+            stmt = conn.createStatement();
+            rs = stmt.executeQuery("SELECT * FROM Personas");
+
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String nombre = rs.getString("nombre");
+                String direccion = rs.getString("direccion");
+
+                Persona persona = new Persona(id, nombre, direccion);
+
+                personas.add(persona);
+            }
+
+            return personas;
+        } catch (SQLException se) {
+            se.printStackTrace();
+            return null;
+        } finally {
+            try {
+                if (rs != null) rs.close();
+                if (stmt != null) stmt.close();
+            } catch (SQLException se) {
+                se.printStackTrace();
+            }
+        }
     }
 
     public void ConectarAServidor() {
