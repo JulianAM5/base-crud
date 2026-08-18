@@ -46,7 +46,7 @@ public class Controlador {
         return enlaceBD.RecuperarPersonas();
     }
 
-    public ArrayList<String> recuperarTelefonosDePersona(int personaId) {
+    public ArrayList<Telefono> recuperarTelefonosDePersona(int personaId) {
         return enlaceBD.RecuperarTelefonosDePersona(personaId);
     }
 

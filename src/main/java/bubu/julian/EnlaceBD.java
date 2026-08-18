@@ -3,6 +3,8 @@ package bubu.julian;
 import java.sql.*;
 import java.util.ArrayList;
 
+import javafx.collections.ObservableList;
+
 public class EnlaceBD {
     // Datos de conexión a la base de datos
     private static final String URL = "jdbc:mariadb://localhost:3306/agenda";
@@ -47,15 +49,17 @@ public class EnlaceBD {
         }
     }
 
-    public ArrayList<String> RecuperarTelefonosDePersona(int personaId) {
+    public ArrayList<Telefono> RecuperarTelefonosDePersona(int personaId) {
         try {
-            ArrayList<String> telefonos = new ArrayList<>();
+            ArrayList<Telefono> telefonos = new ArrayList<>();
             
             stmt = conn.createStatement();
             rs = stmt.executeQuery("SELECT telefono FROM Telefonos WHERE personaId = " + personaId);
 
             while (rs.next()) {
-                telefonos.add(rs.getString("telefono"));
+                int id = rs.getInt("id");
+                String numTelefono = rs.getString("telefono");
+                telefonos.add(new Telefono(id, personaId, numTelefono));
             }
 
             return telefonos;
