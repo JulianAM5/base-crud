@@ -2,6 +2,7 @@ package bubu.julian;
 
 import java.util.ArrayList;
 
+import bubu.julian.GUI.AñadirTelefonoGUI;
 import bubu.julian.GUI.MenuPrincipal;
 import bubu.julian.GUI.VentanaAñadir;
 import javafx.scene.layout.Pane;
@@ -26,11 +27,24 @@ public class Controlador {
     }
 
     public void mostrarVentanaPrincipal() {
-        root.getChildren().add(new MenuPrincipal(this));
+        menu = new MenuPrincipal(this);
+        root.getChildren().add(menu);
     }
 
     public void mostrarVentanaAñadir() {
-        root.getChildren().add(new VentanaAñadir(this));
+        VentanaAñadir ventana = new VentanaAñadir(this);
+        ventana.mostrarAñadirPersona();
+        root.getChildren().add(ventana);
+    }
+
+    public void mostrarVentanaModificar(int personaId) {
+        VentanaAñadir ventana = new VentanaAñadir(this);
+        ventana.mostrarModificarPersona(personaId);
+        root.getChildren().add(ventana);
+    }
+
+    public void mostrarVentanaAñadirTelefono(int personaId) {
+        root.getChildren().add(new AñadirTelefonoGUI(this, personaId));
     }
 
     public void cerrarVentana(Pane pane) {
@@ -46,12 +60,20 @@ public class Controlador {
         return true;
     }
 
+    public boolean solicitarModificarPersona(int id, String nombre, String direccion) {
+        return true;
+    }
+
     public boolean solicitarEliminarPersona(int id) {
+        if (!enlaceBD.EliminarPersona(id)) { return false; }
+
         menu.actualizar();
         return true;
     }
 
     public boolean solicitarEliminarTelefonoAPersona(int personaId, String numTelefono) {
+        if(!enlaceBD.EliminarTelefonoAPersona(personaId, numTelefono)) { return false; }
+
         menu.actualizar();
         return true;
     }

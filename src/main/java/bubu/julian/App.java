@@ -18,7 +18,9 @@ public class App extends Application{
 	@Override
 	public void start(Stage stage) throws Exception {
         Controlador controlador = new Controlador();
-        stage.setScene(new Scene(controlador.getRoot(), 1280, 720));
+        Scene scene = new Scene(controlador.getRoot(), 1280, 720);
+        stage.setScene(scene);
+        scene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
         stage.show();
 	}
 }

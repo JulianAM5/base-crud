@@ -13,28 +13,35 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 
 /**
  * MenuPrincipal
  */
 public class MenuPrincipal extends BorderPane {
 
-    Controlador controlador;
+    private Controlador controlador;
+
+    private String telefonoSeleccionado;
+    private int idPersonaSeleccionada;
 
     public MenuPrincipal(Controlador controlador) {
         this.controlador = controlador;
         setTop(crearTitulo());
         setCenter(crearTablaPersonas());
         setRight(crearTablaTelefonos(-1));
-        setBottom(crearBotonAñadir());
+        idPersonaSeleccionada = -1;
     }
     
     public void actualizar() {
         setCenter(crearTablaPersonas());
         setRight(crearTablaTelefonos(-1));
+        idPersonaSeleccionada = -1;
     }
 
-    private TableView crearTablaPersonas() {
+    private VBox crearTablaPersonas() {
+        VBox holder = new VBox();
         TableView<Persona> tabla = new TableView<Persona>();
 
         TableColumn<Persona, Integer> colId = new TableColumn<>();
@@ -59,6 +66,7 @@ public class MenuPrincipal extends BorderPane {
         tabla.getSelectionModel().selectedItemProperty().addListener((obs, anterior, seleccionado) -> {
             if (seleccionado != null) {
                 setRight(crearTablaTelefonos(seleccionado.getId()));
+                idPersonaSeleccionada = seleccionado.getId();
             }
         });
 
@@ -66,11 +74,46 @@ public class MenuPrincipal extends BorderPane {
         tabla.getColumns().addAll(colId, colNombre, colDireccion);
         tabla.setItems(FXCollections.observableArrayList(controlador.recuperarPersonas()));
 
+        HBox buttonHolder = new HBox();
+        buttonHolder.setAlignment(Pos.CENTER);
+        buttonHolder.setSpacing(30);
+        Button añadirButton = new Button("Añadir");
+        Button modificarButton = new Button("Modificar");
+        Button eliminarButton = new Button("Eliminar");
+        buttonHolder.getChildren().addAll(añadirButton, modificarButton, eliminarButton);
+
+
+        añadirButton.setId("button_pos");
+        eliminarButton.setId("button_neg");
+        modificarButton.setId("button_mod");
+
+        añadirButton.getStyleClass().addAll("button-phone", "button-confirm");
+        eliminarButton.getStyleClass().addAll("button-phone", "button-cancel");
+        modificarButton.getStyleClass().addAll("button-phone", "button-blue");
+
+        añadirButton.setOnAction(e -> {
+            controlador.mostrarVentanaAñadir();
+        });
+
+        modificarButton.setOnAction(e -> {
+            if (idPersonaSeleccionada == -1) { return; }
+
+            controlador.mostrarVentanaModificar(idPersonaSeleccionada);
+        });
+
+        eliminarButton.setOnAction(e -> {
+            controlador.solicitarEliminarPersona(idPersonaSeleccionada);
+        });
+
         setAlignment(tabla, Pos.CENTER);
-        return tabla;
+        holder.getChildren().addAll(tabla, buttonHolder);
+        holder.setAlignment(Pos.CENTER);
+        holder.setSpacing(10);
+        return holder;
     }
 
-    private TableView crearTablaTelefonos(int personaId) {
+    private VBox crearTablaTelefonos(int personaId) {
+        VBox holder = new VBox();
         TableView<Telefono> tabla = new TableView<Telefono>();
 
         TableColumn<Telefono, String> colTelefono = new TableColumn<>();
@@ -89,20 +132,45 @@ public class MenuPrincipal extends BorderPane {
             tabla.setItems(FXCollections.observableArrayList(controlador.recuperarTelefonosDePersona(personaId)));
         }
 
-        setAlignment(tabla, Pos.CENTER);
-        return tabla;
-    }
-
-    private Button crearBotonAñadir() {
-        Button añadirButton = new Button("Añadir");
-        
-        setAlignment(añadirButton, Pos.CENTER);
-
-        añadirButton.setOnAction(e -> {
-            controlador.mostrarVentanaAñadir();
+        tabla.getSelectionModel().selectedItemProperty().addListener((obs, anterior, seleccionado) -> {
+            if (seleccionado != null) {
+                telefonoSeleccionado = seleccionado.getNumTelefono();
+            }
         });
 
-        return añadirButton;
+        Button añadirButton = new Button("Añadir");
+        añadirButton.setId("button_pos");
+
+        Button eliminarButton = new Button("Eliminar");
+        eliminarButton.setId("button_neg");
+
+        HBox buttonHolder = new HBox();
+        buttonHolder.getChildren().addAll(añadirButton, eliminarButton);
+        buttonHolder.setAlignment(Pos.CENTER);
+        buttonHolder.setSpacing(30);
+
+
+        añadirButton.getStyleClass().addAll("button-phone", "button-confirm");
+        eliminarButton.getStyleClass().addAll("button-phone", "button-cancel");
+
+        añadirButton.setOnAction(e -> {
+            if (idPersonaSeleccionada == -1) { return; }
+
+            controlador.mostrarVentanaAñadirTelefono(personaId);
+        });
+
+        eliminarButton.setOnAction(e -> {
+            if (telefonoSeleccionado.isEmpty()) { return; }
+
+            controlador.solicitarEliminarTelefonoAPersona(personaId, telefonoSeleccionado);
+        });
+
+        setAlignment(tabla, Pos.CENTER);
+        holder.setAlignment(Pos.CENTER);
+        holder.setSpacing(10);
+        holder.getChildren().addAll(tabla, buttonHolder);
+
+        return holder;
     }
 
     private Label crearTitulo() {
