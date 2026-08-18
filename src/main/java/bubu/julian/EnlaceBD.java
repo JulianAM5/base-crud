@@ -109,6 +109,37 @@ public class EnlaceBD {
         }
     }
 
+    public boolean EliminarPersona(int personaId) {
+        try {
+            String sqlInstruccion = "DELETE FROM Personas WHERE Id = ?";
+            PreparedStatement ps = conn.prepareStatement(sqlInstruccion);
+            
+            ps.setInt(1, personaId);
+            ps.executeUpdate();
+            ps.close();
+            return true;
+        } catch (SQLException se) {
+            se.printStackTrace();
+            return false;
+        }
+    }
+
+    public boolean EliminarTelefonoAPersona(int personaId, String numTelefono) {
+        try {
+            String sqlInstruccion = "DELETE FROM Telefonos WHERE personaId = ? AND telefono = ?";
+            PreparedStatement ps = conn.prepareStatement(sqlInstruccion);
+
+            ps.setInt(1, personaId);
+            ps.setString(2, numTelefono);
+            ps.executeUpdate();
+            ps.close();
+            return true;
+        } catch (SQLException se) {
+            se.printStackTrace();
+            return false;
+        }
+    }
+
     public void ConectarAServidor() {
 
         try {
